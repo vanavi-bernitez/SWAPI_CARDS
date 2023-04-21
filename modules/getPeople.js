@@ -16,7 +16,7 @@ const getPeople = async () => {
         });
         return  mainPropertiesPeople;
     } catch (error) {
-        console.error('Error while getting people from the API', error)
+        console.error('Error while getting people from the API', error);
     }
 }
 

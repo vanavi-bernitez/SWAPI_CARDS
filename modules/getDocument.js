@@ -1,10 +1,11 @@
-const fetchDocument = async () => {
+const getTemplate = async () => {
     try {
-        const responseDoc = await fetch('../template/cardTemplate.html')
-        const data = await responseDoc.text()
-        console.log(data)
-        
+        const response = await fetch('../template/cardTemplate.html');
+        const data = await response.text();
+        return data;   
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
+
+export { getTemplate }

@@ -2,36 +2,14 @@
 <html>
     <head>
         <script defer type="module" src="./script.js"></script>
-        <style>
-            body {
-                background-image: url('https://w.wallhaven.cc/full/2e/wallhaven-2e5lxy.jpg');
-                background-size: cover;
-                background-repeat: no-repeat;
-            }
-
-            .logoImageContainer {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .logoImageContainer img {
-                max-height: 15%;
-                max-width: 15%;
-            }
-           
-            #cardsSection {
-                display: flex;
-                overflow-x: auto;
-                flex-wrap: nowrap; 
-                width: 100vw;
-            }
-        </style>
+        <link rel="stylesheet" href="./style.css"/> 
     </head>
     <body>
         <div class="logoImageContainer">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Star_Wars_Logo..png?20100627124842"  alt="star wars"/> 
+            <img src="./images/swLogo.png"  alt="star wars logo"/> 
         </div>
-        <div id="cardsSection">((Content))</div> 
+        <div id="cardsContainer">
+            <div id="card"> </div>
+        </div> 
     </body>
 </html>

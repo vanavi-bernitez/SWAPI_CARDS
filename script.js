@@ -1,35 +1,49 @@
-import * as fs from 'fs';
-import { getPeople } from './modules/getter.js'
-import { replaceTemplate } from './modules/replaceTemplate.js'
-import * as http from 'http';
+import { getPeople } from './modules/getPeople.js'
+import { getTemplate } from './modules/getDocument.js';
 
-const cardTemplate = fs.readFileSync('./template/cardTemplate.html', 'utf-8');
-const index = fs.readFileSync('./index.html', 'utf-8');
 
-const server = http.createServer((request, response) => {
-    const pathName = request.url;
-    if (pathName === '/' || pathName === '/main') {
-        response.writeHead(200, {
-            'Content-type': 'text/html'
-        })
+const createPeopleCards = async () => {
+    const cardTemplate = await getTemplate();
+    console.log(cardTemplate)
 
-        const getPeopleData = async () => {
-            const peopleData = await getPeople();
-            const peopleDataCloned = [...peopleData];
-            const cardsPeople = peopleDataCloned.map((person) => replaceTemplate(cardTemplate, person)).join('');
-            const output = index.replace('((Content))', cardsPeople)
-            response.end(output);
+    const cardsContainer = document.querySelector('#cardsContainer');
+    const card = document.querySelector('#card');
+    card.innerHTML = cardTemplate;
+
+    const peopleData = await getPeople();
+    const people = [...peopleData];
+    
+    people.forEach((person) => { 
+        card.querySelector('#name').textContent = person.name;
+        card.querySelector('#height').textContent = person.height;
+        card.querySelector('#hairColor').textContent = person.hairColor;
+        card.querySelector('#skinColor').textContent = person.skinColor;
+        card.querySelector('#eyeColor').textContent = person.eyeColor;
+        card.querySelector('#birthYear').textContent = person.birthYear;
+        const genderImg = card.querySelector('gender');
+        if (person.gender ===  'male') {
+            genderImg.src = '../images/men.png'
+        } else if (person.gender === 'n/a') {
+            genderImg.src = '../images/na.png'
         }
-        getPeopleData()
-    } else {
-        response.writeHead(404);
-        response.end('Page not found');
-    }
-})
+        cardsContainer.appendChild(card);
+    })
 
-server.listen(8000, '127.0.0.1', () => {
-    console.log('Listening on port 8000');
-})
+}
+
+createPeopleCards();
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

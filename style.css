@@ -1,3 +1,23 @@
 body {
-    background: linear-gradient(90deg, rgba(255,0,0,0.8) 0%, rgba(117,8,124,0.9) 50%, rgba(0,14,255,1) 100%);
+    background-image: url('https://w.wallhaven.cc/full/2e/wallhaven-2e5lxy.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.logoImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoImageContainer img {
+    max-height: 15%;
+    max-width: 15%;
+}
+
+#cardsSection {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap; 
+    width: 100vw;
 }
