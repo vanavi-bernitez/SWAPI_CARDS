@@ -2,7 +2,6 @@ import { getPeople } from './modules/getPeople.js'
 import { getTemplate } from './modules/getDocument.js';
 import { getNextPage } from './modules/getNextPage.js';
 
-
 let url = 'https://swapi.dev/api/people/';
 
 const createPeopleCards = async () => {
@@ -12,7 +11,7 @@ const createPeopleCards = async () => {
     const [peopleData, nextPageData] = await getPeople(url);
 
     url = nextPageData;
-
+    
     const people = [...peopleData];
     people.forEach((person) => { 
         const card = document.createElement('div');
