@@ -1,8 +1,9 @@
-const getPeople = async () => {
+const getPeople = async (url) => {
     try {
-        const response = await fetch('https://swapi.dev/api/people/');
+        const response = await fetch(url);
         const data = await response.json();
         const people = data.results;
+        const nextPage = data.next;
         const mainPropertiesPeople = people.map((person) => {
             return {
                 name: person.name,
@@ -14,7 +15,7 @@ const getPeople = async () => {
                 gender: person.gender
             }
         });
-        return  mainPropertiesPeople;
+        return  [mainPropertiesPeople, nextPage];
     } catch (error) {
         console.error('Error while getting people from the API', error);
     }

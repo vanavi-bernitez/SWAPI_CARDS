@@ -15,9 +15,21 @@ body {
     max-width: 15%;
 }
 
-#cardsSection {
+#cardsContainer {
+    height: 480px;
     display: flex;
     overflow-x: auto;
     flex-wrap: nowrap; 
     width: 100vw;
+}
+
+#nextBtn {
+    background-color: rgba(255, 247, 0, 0.6);
+    color: #fff;
+    border-radius: 5em;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 0;
+    padding: 1% 1%;
+    font-size: 16px;
+    cursor: pointer;
 }
